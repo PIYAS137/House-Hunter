@@ -17,7 +17,7 @@ const AppNavbar = () => {
     </>
 
     return (
-        <nav>
+        <nav className=" sticky top-0 z-50">
             <div className="navbar bg-base-300">
                 <div className="navbar-start">
                     <div className="dropdown">
