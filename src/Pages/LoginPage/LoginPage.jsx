@@ -7,7 +7,7 @@ import { setUserInstanceToLS } from "../../Utils/StorageOperations"
 
 const LoginPage = () => {
 
-    const {LoginUser,setUser} = useContext(CentralContext);
+    const { LoginUser, setUser } = useContext(CentralContext);
 
     const {
         register,
@@ -17,11 +17,10 @@ const LoginPage = () => {
     } = useForm()
 
     const onSubmit = (datas) => {
-        console.log(datas);
         LoginUser(datas)
-            .then(res=>{
+            .then(res => {
                 console.log(res.data);
-                if(res.data.flag === -1){
+                if (res.data.flag === -1) {
                     // user not found !
                     Swal.fire({
                         position: "top-end",
@@ -29,8 +28,8 @@ const LoginPage = () => {
                         title: "Please Insert valid email and password",
                         showConfirmButton: false,
                         timer: 1500
-                      });
-                }else if(res.data.email == datas.email){
+                    });
+                } else if (res.data.email == datas.email) {
                     // user is found
                     Swal.fire({
                         position: "top-end",
@@ -38,11 +37,11 @@ const LoginPage = () => {
                         title: "Successfully Logged In !",
                         showConfirmButton: false,
                         timer: 1500
-                      });
-                      reset()
-                      setUserInstanceToLS(datas);
-                      setUser(datas)
-                }else{
+                    });
+                    reset()
+                    setUserInstanceToLS(datas);
+                    setUser(datas)
+                } else {
                     // server side error
                     Swal.fire({
                         position: "top-end",
@@ -50,9 +49,9 @@ const LoginPage = () => {
                         title: "Facing Issue from Server :(",
                         showConfirmButton: false,
                         timer: 1500
-                      });
+                    });
                 }
-            }).catch(err=>{
+            }).catch(err => {
                 console.log(err.message);
             })
     }

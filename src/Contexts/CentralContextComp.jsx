@@ -10,12 +10,8 @@ export const CentralContext = createContext(null);
 const CentralContextComp = ({ children }) => {
 
   const publicAxios = usePublicAxios();
-
-
   const [user, setUser] = useState({});
   const [loader, setLoader] = useState(true);
-
-
 
 
   // Create User
@@ -51,10 +47,6 @@ const CentralContextComp = ({ children }) => {
       return getUserInstanceFromLS()
     }
   },[])
-
-  console.log(user);
-
-
 
 
   const contextInfo = {

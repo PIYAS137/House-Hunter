@@ -12,6 +12,8 @@ const AppNavbar = () => {
 
     const navLinks = <>
         <li><NavLink to={'/'}>Home Page</NavLink></li>
+        <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li>
+        <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li>
     </>
 
     return (

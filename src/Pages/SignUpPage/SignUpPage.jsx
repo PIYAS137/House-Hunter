@@ -9,8 +9,6 @@ const SignUpPage = () => {
 
     const {CreateUser,setUser} = useContext(CentralContext);
 
-
-
     const {
         register,
         reset,
@@ -19,7 +17,6 @@ const SignUpPage = () => {
     } = useForm()
 
     const onSubmit = (datas) => {
-        console.log(datas);
         CreateUser(datas)
         .then(res=>{
             if(res.data.flag === -1){
@@ -57,7 +54,6 @@ const SignUpPage = () => {
             console.log(err);
         })
     }
-
 
 
     return (
