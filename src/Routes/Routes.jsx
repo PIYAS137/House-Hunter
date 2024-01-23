@@ -12,6 +12,7 @@ import RanterRootPage from '../Pages/Renter/RanterRootPage/RanterRootPage';
 import RanterDashboard from '../Pages/Renter/RanterDashboard/RanterDashboard';
 import RanterManagePage from '../Pages/Renter/RanterManagePage/RanterManagePage';
 import ViewAllItemsPage from '../Pages/ViewAllItemsPage/ViewAllItemsPage';
+import OneItemViewPage from '../Pages/OneItemViewPage/OneItemViewPage';
 
 
 const router = createBrowserRouter ([
@@ -31,6 +32,10 @@ const router = createBrowserRouter ([
             },{
                 path : '/allitems',
                 element : <ViewAllItemsPage/>
+            },{
+                path : '/allitems/:sid',
+                loader : ({params})=>fetch(`http://localhost:5022/item/${params.sid}`),
+                element : <OneItemViewPage/>
             }
         ]
     },

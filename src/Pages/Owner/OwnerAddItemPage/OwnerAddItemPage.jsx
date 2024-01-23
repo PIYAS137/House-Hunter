@@ -23,6 +23,7 @@ const OwnerAddItemPage = () => {
   const onSubmit = (data) => {
     data.create = getCurrentDate();
     data.email = user?.email;
+    data.status = false;
     publicAxios.post('/item',data)
       .then(res=>{
         if(res.data.insertedId){

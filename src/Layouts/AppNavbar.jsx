@@ -8,8 +8,9 @@ const AppNavbar = () => {
 
     const handleClickLogout = () => {
         LogOutUser();
-        setUser({})
+        setUser({});
     }
+
 
     const navLinks = <>
         <li><NavLink to={'/'}>Home Page</NavLink></li>

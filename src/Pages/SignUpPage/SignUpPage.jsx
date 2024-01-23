@@ -57,7 +57,7 @@ const SignUpPage = () => {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="card-body max-w-xl mx-auto bg-slate-200 rounded-xl mt-24">
+        <form onSubmit={handleSubmit(onSubmit)} className="card-body max-w-xl mx-auto bg-slate-200 rounded-xl my-24">
             <h1 className=" text-center font-bold text-xl uppercase">Register Page</h1>
 
             {/* Name Field */}
@@ -69,6 +69,11 @@ const SignUpPage = () => {
             <small className="font-bold text-gray-600">Enter Phone Number</small>
             <input {...register("phone", { required: true })} className="input input-bordered" placeholder="Enter your phone number" />
             {errors.phone && <span className=" text-red-600 text-xs">This field is required</span>}
+
+            {/* Photo URL Field */}
+            <small className="font-bold text-gray-600">Enter Phone Number</small>
+            <input {...register("photo", { required: true })} className="input input-bordered" placeholder="Enter your photo url" />
+            {errors.photo && <span className=" text-red-600 text-xs">This field is required</span>}
 
             {/* Account Role Field */}
             <small className="font-bold text-gray-600">Select Account Role</small>
