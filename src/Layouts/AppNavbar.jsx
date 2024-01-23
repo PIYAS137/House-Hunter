@@ -4,10 +4,11 @@ import { CentralContext } from "../Contexts/CentralContextComp"
 import { FaBuildingColumns } from "react-icons/fa6";
 
 const AppNavbar = () => {
-    const { user, setUser, LogOutUser } = useContext(CentralContext);
+    const { user, setUser, setLoader, LogOutUser } = useContext(CentralContext);
 
     const handleClickLogout = () => {
         LogOutUser();
+        setLoader(true);
         setUser({});
     }
 
@@ -15,8 +16,8 @@ const AppNavbar = () => {
     const navLinks = <>
         <li><NavLink to={'/'}>Home Page</NavLink></li>
         <li><NavLink to={'/allitems'}>Houses</NavLink></li>
-        {/* {user.role === 'renter' ? <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li> : ''}
-        {user.role === 'owner' ? <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li> : ''} */}
+        {/* {user?.role === 'renter' ? <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li> : ''}
+        {user?.role === 'owner' ? <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li> : ''} */}
         <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li>
         <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li>
         

@@ -13,9 +13,9 @@ const OneItemViewPage = () => {
             <div className="  col-span-2">
                 <h1 className=" border-b py-2 text-2xl font-black text-center uppercase bg-white">Home Details</h1>
                 <div className=" w-full flex justify-center mt-5 ">
-                    <img className=" max-w-xl aspect-square object-contain" src={data?.image} alt="" />
+                    <img className=" max-w-lg aspect-square object-contain" src={data?.image} alt="" />
                 </div>
-                <table className=" w-full mt-10 max-w-xl mx-auto border">
+                <table className=" w-full mt-10 max-w-xl mx-auto border my-10">
                     <tbody>
                         <tr className=" grid grid-cols-3 border-b ">
                             <td className=" col-span-1 p-2 border-r font-bold flex items-center">City </td>
@@ -44,8 +44,8 @@ const OneItemViewPage = () => {
                     </tbody>
                 </table>
             </div>
-            <div className=" border-l col-span-1 flex flex-col my-16 items-center">
-                <img className=" w-32 aspect-square object-cover rounded-full" src={data?.image} alt="" />
+            <div className=" border-l col-span-1 flex flex-col py-16 items-center">
+                <img className=" w-32 aspect-square object-cover rounded-full" src={data?.ownerImage} alt="" />
                 <table className=" w-full mt-16 ">
                     <tbody>
                         <tr className=" grid grid-cols-3 border-y ">

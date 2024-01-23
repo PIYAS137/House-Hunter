@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { CentralContext } from "../../Contexts/CentralContextComp"
 import Swal from "sweetalert2"
 import { setUserInstanceToLS } from "../../Utils/StorageOperations"
 
 const LoginPage = () => {
 
-    const { LoginUser, setUser } = useContext(CentralContext);
+    const { LoginUser, setUser, setLoader } = useContext(CentralContext);
+    const navigate = useNavigate();
 
     const {
         register,
@@ -19,7 +20,6 @@ const LoginPage = () => {
     const onSubmit = (datas) => {
         LoginUser(datas)
             .then(res => {
-                console.log(res.data);
                 if (res.data.flag === -1) {
                     // user not found !
                     Swal.fire({
@@ -38,9 +38,11 @@ const LoginPage = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    reset()
+                    reset();
+                    setLoader(false);
                     setUserInstanceToLS(res.data);
-                    setUser(res.data)
+                    setUser(res.data);
+                    navigate(location?.state ? location.state : '/');
                 } else {
                     // server side error
                     Swal.fire({
@@ -73,7 +75,7 @@ const LoginPage = () => {
                 <input {...register("pass", { required: true })} className="input input-bordered" type="password" placeholder="Enter your password" />
                 {errors.pass && <span className=" text-red-600 text-xs">This field is required</span>}
 
-                <p>Dont have an account? <Link to={'/signup'} className=" font-semibold text-blue-600">Create Account</Link></p>
+                <p>Dont have an account? <Link to={'/signup'} state={location.state} className=" font-semibold text-blue-600">Create Account</Link></p>
 
                 <div className="form-control mt-6">
                     <button className="btn btn-primary">Login</button>

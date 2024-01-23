@@ -24,6 +24,7 @@ const OwnerAddItemPage = () => {
     data.create = getCurrentDate();
     data.email = user?.email;
     data.status = false;
+    data.ownerImage = user?.photo,
     publicAxios.post('/item',data)
       .then(res=>{
         if(res.data.insertedId){
@@ -48,7 +49,7 @@ const OwnerAddItemPage = () => {
 
       {/* Name Field */}
       <small className="font-bold text-gray-600">Enter Name</small>
-      <input {...register("name", { required: true })} className="input input-bordered" placeholder="Enter your name" />
+      <input {...register("name", { required: true })} defaultValue={user?.name} className="input input-bordered" placeholder="Enter your name" />
       {errors.name && <span className=" text-red-600 text-xs">This field is required</span>}
 
       {/* Address Field */}
@@ -95,7 +96,7 @@ const OwnerAddItemPage = () => {
 
       {/* Phone number field */}
       <small className="font-bold text-gray-600">Enter your phone number</small>
-      <input {...register("phone", { required: true })} type="number" className="input input-bordered" placeholder="Enter your phone number" />
+      <input {...register("phone", { required: true })} defaultValue={user?.phone} type="number" className="input input-bordered" placeholder="Enter your phone number" />
       {errors.phone && <span className=" text-red-600 text-xs">This field is required</span>}
 
       {/* Description field */}

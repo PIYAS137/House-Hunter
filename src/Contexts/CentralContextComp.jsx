@@ -34,11 +34,10 @@ const CentralContextComp = ({ children }) => {
 
   // Hold user Instance
   useEffect(()=>{
-    setLoader(true);
     // This call back function if used for hold the user instance for every effect !
     const unSubscribe =()=> getUserInstanceFromLS();
     if(unSubscribe){
-      setLoader(false)
+      setLoader(false);
       setUser(unSubscribe);
     }else{
       setUser({})
@@ -55,6 +54,7 @@ const CentralContextComp = ({ children }) => {
     CreateUser,
     LogOutUser,
     setUser,
+    setLoader,
     LoginUser
   }
 

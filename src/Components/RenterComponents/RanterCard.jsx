@@ -13,10 +13,9 @@ const RanterCard = () => {
                 <p className=" flex items-center"><FaMoneyBill className=" mr-1 text-lg" />5000 Taka /m</p>
             </div>
 
-            <div className="flex justify-between items-end flex-col ">
-                <button className="btn w-full">Update</button>
-                <button className="btn w-full">Delete</button>
-                <button className="btn w-full">View</button>
+            <div className="flex justify-around items-end flex-col ">
+                <button className="btn w-full hover:bg-red-500 hover:text-white">Delete</button>
+                <button className="btn w-full hover:bg-purple-500 hover:text-white">View</button>
             </div>
         </div>
     )

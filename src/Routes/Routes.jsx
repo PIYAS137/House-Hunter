@@ -13,61 +13,68 @@ import RanterDashboard from '../Pages/Renter/RanterDashboard/RanterDashboard';
 import RanterManagePage from '../Pages/Renter/RanterManagePage/RanterManagePage';
 import ViewAllItemsPage from '../Pages/ViewAllItemsPage/ViewAllItemsPage';
 import OneItemViewPage from '../Pages/OneItemViewPage/OneItemViewPage';
+import PrivateRoute from '../Private/PrivateRoute';
+import OwnerUpdatePage from '../Pages/Owner/OwnerUpdatePage/OwnerUpdatePage';
 
 
-const router = createBrowserRouter ([
+const router = createBrowserRouter([
     {
         path: '/',
-        element : <RootPage/>,
+        element: <RootPage />,
         children: [
             {
                 path: '/',
-                element: <HomePage/>
-            },{
+                element: <HomePage />
+            }, {
                 path: '/login',
-                element : <LoginPage/>
-            },{
+                element: <LoginPage />
+            }, {
                 path: '/signup',
-                element : <SignUpPage/>
-            },{
-                path : '/allitems',
-                element : <ViewAllItemsPage/>
-            },{
-                path : '/allitems/:sid',
-                loader : ({params})=>fetch(`http://localhost:5022/item/${params.sid}`),
-                element : <OneItemViewPage/>
+                element: <SignUpPage />
+            }, {
+                path: '/allitems',
+                element: <ViewAllItemsPage />
+            }, {
+                path: '/allitems/:sid',
+                loader: ({ params }) => fetch(`http://localhost:5022/item/${params.sid}`),
+                element: <PrivateRoute><OneItemViewPage /></PrivateRoute>
+            },
+            {
+                path: 'update/:sid',
+                loader: ({ params }) => fetch(`http://localhost:5022/item/${params.sid}`),
+                element: <PrivateRoute><OwnerUpdatePage /></PrivateRoute>
             }
         ]
     },
     {
-        path : 'owner',
-        element : <OwnerRootPage/>,
-        children : [
+        path: 'owner',
+        element: <OwnerRootPage />,
+        children: [
             {
-                path : 'profile',
-                element : <OwnerDashboard/>
+                path: 'profile',
+                element: <PrivateRoute><OwnerDashboard /></PrivateRoute>
             },
             {
                 path: 'add',
-                element :<OwnerAddItemPage/>
+                element: <PrivateRoute><OwnerAddItemPage /></PrivateRoute>
             },
             {
                 path: 'manage',
-                element : <OwnerMangePage/>
-            }
+                element: <PrivateRoute><OwnerMangePage /></PrivateRoute>
+            },
         ]
     },
     {
-        path : 'ranter',
-        element : <RanterRootPage/>,
-        children : [
+        path: 'ranter',
+        element: <RanterRootPage />,
+        children: [
             {
-                path : 'profile',
-                element : <RanterDashboard/>
+                path: 'profile',
+                element: <PrivateRoute><RanterDashboard /></PrivateRoute>
             },
             {
-                path : 'manage',
-                element : <RanterManagePage/>
+                path: 'manage',
+                element: <PrivateRoute><RanterManagePage /></PrivateRoute>
             }
         ]
     }

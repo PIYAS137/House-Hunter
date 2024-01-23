@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { CentralContext } from "../../Contexts/CentralContextComp"
 import Swal from 'sweetalert2'
 import { setUserInstanceToLS } from "../../Utils/StorageOperations"
 
 const SignUpPage = () => {
 
-    const {CreateUser,setUser} = useContext(CentralContext);
+    const {CreateUser,setUser, setLoader} = useContext(CentralContext);
+    const navigate = useNavigate();
 
     const {
         register,
@@ -39,7 +40,9 @@ const SignUpPage = () => {
                   });
                   reset();
                   setUserInstanceToLS(datas);
-                  setUser(datas)
+                  setUser(datas);
+                  setLoader(false);
+                  navigate(location?.state ? location.state : '/')
             }else{
                 // Server side error !
                 Swal.fire({
@@ -71,7 +74,7 @@ const SignUpPage = () => {
             {errors.phone && <span className=" text-red-600 text-xs">This field is required</span>}
 
             {/* Photo URL Field */}
-            <small className="font-bold text-gray-600">Enter Phone Number</small>
+            <small className="font-bold text-gray-600">Enter Photo URL</small>
             <input {...register("photo", { required: true })} className="input input-bordered" placeholder="Enter your photo url" />
             {errors.photo && <span className=" text-red-600 text-xs">This field is required</span>}
 

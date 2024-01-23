@@ -1,9 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { useContext } from "react";
+import { CentralContext } from "../../Contexts/CentralContextComp";
 
 
 const OwnerMenu = () => {
+    
+    const {LogOutUser,setUser,setLoader} = useContext(CentralContext);
+    const navigate = useNavigate();
 
+    const handleLogOut=()=>{
+        LogOutUser();
+        setUser({});
+        navigate('/login');
+        setLoader(true);
+    }
 
 
     return (
@@ -21,9 +32,9 @@ const OwnerMenu = () => {
                         <h1 className=" p-2 text-center text-black text-xl font-black">Owner Menu</h1>
                         <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/owner/profile'}>Owner Dashboard</NavLink></li>
                         <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/owner/add'}>+ Add House</NavLink></li>
-                        <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/owner/manage'}>Manage House</NavLink></li>
+                        <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/owner/manage'}>Manage Requests</NavLink></li>
                         <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/'}>Back To Homepage</NavLink></li>
-                        <li className=" border rounded-lg font-semibold bg-red-400 text-white border-red-500"><NavLink to={'/'}>Logout</NavLink></li>
+                        <li onClick={handleLogOut} className=" border p-2 px-3 cursor-pointer hover:bg-red-500 rounded-lg font-semibold bg-red-400 text-white border-red-500">Logout</li>
                     </ul>
                 </div>
             </div>

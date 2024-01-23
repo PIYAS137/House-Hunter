@@ -1,8 +1,24 @@
+import { useContext } from "react"
 import { FaBarsStaggered } from "react-icons/fa6"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
+import { CentralContext } from "../../Contexts/CentralContextComp"
 
 
 const RanterMenu = () => {
+
+    const {LogOutUser,setUser,setLoader} = useContext(CentralContext);
+    const navigate = useNavigate();
+
+    const handleLogOut=()=>{
+        LogOutUser();
+        setUser({});
+        setLoader(true);
+        navigate('/login');
+    }
+
+
+
+
     return (
         <div>
             <div className="drawer z-50">
@@ -19,7 +35,7 @@ const RanterMenu = () => {
                         <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/ranter/profile'}>Ranter Dashboard</NavLink></li>
                         <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/ranter/manage'}>Manage Request</NavLink></li>
                         <li className=" border rounded-lg font-semibold border-black"><NavLink to={'/'}>Back To Homepage</NavLink></li>
-                        <li className=" border rounded-lg font-semibold bg-red-400 text-white border-red-500"><NavLink to={'/'}>Logout</NavLink></li>
+                        <li onClick={handleLogOut} className=" border p-2 px-3 cursor-pointer hover:bg-red-500 rounded-lg font-semibold bg-red-400 text-white border-red-500">Logout</li>
                     </ul>
                 </div>
             </div>
