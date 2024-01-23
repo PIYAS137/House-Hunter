@@ -16,6 +16,9 @@ const RecentHomesSection = () => {
             <HomeCard/>
             <HomeCard/>
         </div>
+        <div className=' text-center mt-10'>
+          <button className='uppercase btn hover:bg-orange-500 bg-orange-400 text-white'>View All House</button>
+        </div>
     </div>
   )
 }

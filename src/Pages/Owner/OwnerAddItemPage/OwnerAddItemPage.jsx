@@ -1,21 +1,43 @@
 import { useForm } from "react-hook-form"
+import { bangladeshCities } from "../../../Utils/Cities";
+import usePublicAxios from "../../../Hooks/usePublicAxios";
+import {useNavigate} from 'react-router-dom';
+import Swal from 'sweetalert2'
+import { getCurrentDate } from "../../../Utils/GetCurrentDate";
+import { useContext } from "react";
+import { CentralContext } from "../../../Contexts/CentralContextComp";
 
-
-
-const cities = [
-  'dhaka', 'barisal', 'khulna'
-]
 
 
 const OwnerAddItemPage = () => {
+
+  const {user} = useContext(CentralContext);
+  const publicAxios = usePublicAxios();
+  const navigate = useNavigate();
+
   const {
     register,
-    // reset, 
     handleSubmit,
     formState: { errors },
   } = useForm()
   const onSubmit = (data) => {
-    console.log(data);
+    data.create = getCurrentDate();
+    data.email = user?.email;
+    publicAxios.post('/item',data)
+      .then(res=>{
+        if(res.data.insertedId){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Successfully Added",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          navigate('/owner/profile')
+        }
+      }).catch(err=>{
+        console.log(err);
+      })
   }
 
 
@@ -28,16 +50,16 @@ const OwnerAddItemPage = () => {
       <input {...register("name", { required: true })} className="input input-bordered" placeholder="Enter your name" />
       {errors.name && <span className=" text-red-600 text-xs">This field is required</span>}
 
-      {/* Phone Number Field */}
+      {/* Address Field */}
       <small className="font-bold text-gray-600">Enter Address</small>
       <input {...register("address", { required: true })} className="input input-bordered" placeholder="Enter house address" />
       {errors.address && <span className=" text-red-600 text-xs">This field is required</span>}
 
-      {/* Account Role Field */}
+      {/* City Field */}
       <small className="font-bold text-gray-600">Select City</small>
-      <select className="p-3 rounded-lg input-bordered" {...register("role")}>
+      <select className="p-3 rounded-lg input-bordered" {...register("city")}>
         {
-          cities.map((one, i) => {
+          bangladeshCities.map((one, i) => {
             return (
               <option key={i} value={one}>{one.toUpperCase()}</option>
             )
@@ -46,18 +68,18 @@ const OwnerAddItemPage = () => {
       </select>
 
       {/* Bed Room Number Field */}
-      <small className="font-bold text-gray-600">Bed Room Numbers</small>
-      <input {...register("email", { required: true })} type="number" className="input input-bordered" placeholder="Bed room number" />
-      {errors.email && <span className=" text-red-600 text-xs">This field is required</span>}
+      <small className="font-bold text-gray-600">Bed Room Numbers ( 1 - 6 )</small>
+      <input {...register("bedroom", { required: true })} type="number" max={6} min={1} className="input input-bordered" placeholder="Bed room number" />
+      {errors.bedroom && <span className=" text-red-600 text-xs">This field is required</span>}
 
-      {/* Bed Room Number Field */}
-      <small className="font-bold text-gray-600">Enter Room Size</small>
-      <input {...register("size", { required: true })} type="number" className="input input-bordered" placeholder="Enter room size" />
+      {/* Foom Size Field */}
+      <small className="font-bold text-gray-600">Enter Maximum Flat Room Size ( 0 - 2000sqft )</small>
+      <input {...register("size", { required: true })} type="number" max={2000} min={0} className="input input-bordered" placeholder="Enter room size" />
       {errors.size && <span className=" text-red-600 text-xs">This field is required</span>}
 
       {/* Room Image */}
       <small className="font-bold text-gray-600">Enter room image URL</small>
-      <input {...register("image", { required: true })} type="number" className="input input-bordered" placeholder="Enter room image url" />
+      <input {...register("image", { required: true })} type="text" className="input input-bordered" placeholder="Enter room image url" />
       {errors.image && <span className=" text-red-600 text-xs">This field is required</span>}
 
       {/* Avaialable Date Field */}
@@ -66,8 +88,8 @@ const OwnerAddItemPage = () => {
       {errors.date && <span className=" text-red-600 text-xs">This field is required</span>}
 
       {/* Rent per month */}
-      <small className="font-bold text-gray-600">Enter Rent Price</small>
-      <input {...register("price", { required: true })} type="number" className="input input-bordered" placeholder="Enter price in Taka" />
+      <small className="font-bold text-gray-600">Enter Rent Price /m. ( 3k - 18k : RAJUK standard) </small>
+      <input {...register("price", { required: true })} type="number" min={0} max={18000} className="input input-bordered" placeholder="Enter price in Taka, like 5000" />
       {errors.price && <span className=" text-red-600 text-xs">This field is required</span>}
 
       {/* Phone number field */}
@@ -76,9 +98,9 @@ const OwnerAddItemPage = () => {
       {errors.phone && <span className=" text-red-600 text-xs">This field is required</span>}
 
       {/* Description field */}
-      <small className="font-bold text-gray-600">Write about this home</small>
-      <textarea {...register("phone", { required: true })} type="text" className="input textarea input-bordered" placeholder="Enter description" />
-      {errors.phone && <span className=" text-red-600 text-xs">This field is required</span>}
+      <small className="font-bold text-gray-600">Write about your home</small>
+      <textarea {...register("describe", { required: true })} type="text" className="textarea textarea-bordered" placeholder="Enter description" />
+      {errors.describe && <span className=" text-red-600 text-xs">This field is required</span>}
 
       <div className="form-control mt-3">
         <button className="btn btn-primary uppercase">SUBMIT</button>

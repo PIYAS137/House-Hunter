@@ -39,8 +39,8 @@ const LoginPage = () => {
                         timer: 1500
                     });
                     reset()
-                    setUserInstanceToLS(datas);
-                    setUser(datas)
+                    setUserInstanceToLS(res.data);
+                    setUser(res.data)
                 } else {
                     // server side error
                     Swal.fire({
@@ -59,25 +59,27 @@ const LoginPage = () => {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="card-body max-w-xl mx-auto bg-slate-200 rounded-xl mt-24">
-            <h1 className=" text-center font-bold text-xl uppercase">Login Page</h1>
+        <div className=" flex justify-center items-center h-screen">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body max-w-xl mx-auto bg-slate-200 rounded-xl ">
+                <h1 className=" text-center font-bold text-xl uppercase">Login Page</h1>
 
-            {/* Email Field */}
-            <small className="font-bold text-gray-600">Enter Email</small>
-            <input {...register("email", { required: true })} className="input input-bordered" placeholder="Enter your email" />
-            {errors.email && <span className=" text-red-600 text-xs">This field is required</span>}
+                {/* Email Field */}
+                <small className="font-bold text-gray-600">Enter Email</small>
+                <input {...register("email", { required: true })} className="input input-bordered" placeholder="Enter your email" />
+                {errors.email && <span className=" text-red-600 text-xs">This field is required</span>}
 
-            {/* Password Field */}
-            <small className="font-bold text-gray-600">Enter Password</small>
-            <input {...register("pass", { required: true })} className="input input-bordered" type="password" placeholder="Enter your password" />
-            {errors.pass && <span className=" text-red-600 text-xs">This field is required</span>}
+                {/* Password Field */}
+                <small className="font-bold text-gray-600">Enter Password</small>
+                <input {...register("pass", { required: true })} className="input input-bordered" type="password" placeholder="Enter your password" />
+                {errors.pass && <span className=" text-red-600 text-xs">This field is required</span>}
 
-            <p>Dont have an account? <Link to={'/signup'} className=" font-semibold text-blue-600">Create Account</Link></p>
+                <p>Dont have an account? <Link to={'/signup'} className=" font-semibold text-blue-600">Create Account</Link></p>
 
-            <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-            </div>
-        </form>
+                <div className="form-control mt-6">
+                    <button className="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
     )
 }
 

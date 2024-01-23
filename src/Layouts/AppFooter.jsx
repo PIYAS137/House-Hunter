@@ -1,6 +1,9 @@
 import { FaBuildingColumns } from "react-icons/fa6";
 
 const AppFooter = () => {
+
+
+    
     return (
         <div className=" bg-base-200">
             <footer className="footer p-10 mx-auto container text-base-content flex justify-around">

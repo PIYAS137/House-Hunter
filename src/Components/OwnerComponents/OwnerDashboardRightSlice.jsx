@@ -1,6 +1,15 @@
 import { FaHouseChimney, FaFileImport } from "react-icons/fa6";
+import {Link} from 'react-router-dom';
+import useGetOwnerData from "../../Hooks/useGetOwnerData";
+
 
 const OwnerDashboardRightSlice = () => {
+
+    const [ownerData,] = useGetOwnerData();
+
+
+
+
     return (
         <div className=" flex flex-col items-center mt-16">
             <div className=" relative">
@@ -12,12 +21,12 @@ const OwnerDashboardRightSlice = () => {
                 <h1 className=" text-sm text-yellow-700">piyasmahmudealif@gmail.com</h1>
             </div>
             <div className=" mt-3">
-                <h1 className=" space-x-2 text-lg flex items-center"><FaHouseChimney className=" mr-2" /> House Posted <span className="font-bold">: 20</span></h1>
-                <h1 className=" space-x-2 text-lg flex items-center"><FaFileImport className=" mr-2" /> Rent Request <span className="font-bold">: 20</span></h1>
+                <h1 className=" space-x-2 text-lg flex items-center"><FaHouseChimney className=" mr-2" /> House Posted <span className="font-bold">: {ownerData?.length}</span></h1>
+                <h1 className=" space-x-2 text-lg flex items-center"><FaFileImport className=" mr-2" /> Rent Request <span className="font-bold">: 00</span></h1>
             </div>
             <div className="space-x-3 mt-8">
-                <button className="btn btn-sm bg-yellow-400 shadow-lg">+ Add New House</button>
-                <button className="btn btn-sm bg-yellow-400 shadow-lg"> Manage House</button>
+                <Link to={'/owner/add'}><button className="btn btn-sm bg-yellow-400 shadow-lg">+ Add New House</button></Link>
+                <Link to={'/owner/manage'}><button className="btn btn-sm bg-yellow-400 shadow-lg"> Manage Houses</button></Link>
             </div>
         </div>
     )
