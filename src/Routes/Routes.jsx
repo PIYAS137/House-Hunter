@@ -11,6 +11,7 @@ import OwnerMangePage from '../Pages/Owner/OwnerMangePage/OwnerMangePage';
 import RanterRootPage from '../Pages/Renter/RanterRootPage/RanterRootPage';
 import RanterDashboard from '../Pages/Renter/RanterDashboard/RanterDashboard';
 import RanterManagePage from '../Pages/Renter/RanterManagePage/RanterManagePage';
+import ViewAllItemsPage from '../Pages/ViewAllItemsPage/ViewAllItemsPage';
 
 
 const router = createBrowserRouter ([
@@ -27,6 +28,9 @@ const router = createBrowserRouter ([
             },{
                 path: '/signup',
                 element : <SignUpPage/>
+            },{
+                path : '/allitems',
+                element : <ViewAllItemsPage/>
             }
         ]
     },

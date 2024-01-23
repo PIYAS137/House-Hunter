@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { CentralContext } from "../Contexts/CentralContextComp"
+import { FaBuildingColumns } from "react-icons/fa6";
 
 const AppNavbar = () => {
     const { user, setUser, LogOutUser } = useContext(CentralContext);
@@ -12,6 +13,7 @@ const AppNavbar = () => {
 
     const navLinks = <>
         <li><NavLink to={'/'}>Home Page</NavLink></li>
+        <li><NavLink to={'/allitems'}>Houses</NavLink></li>
         <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li>
         <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li>
     </>
@@ -28,7 +30,10 @@ const AppNavbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">House Hunter</a>
+                    <div className="text-xl font-black text-center flex flex-col justify-center items-center space-x-2 text-yellow-600">
+                        <FaBuildingColumns className=" text-2xl"/>
+                        <p>House Hunter</p>
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

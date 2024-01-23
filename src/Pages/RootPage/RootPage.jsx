@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom"
 import AppNavbar from "../../Layouts/AppNavbar"
+import AppFooter from "../../Layouts/AppFooter"
 
 
 const RootPage = () => {
@@ -7,6 +8,7 @@ const RootPage = () => {
     <div>
         <AppNavbar/>
         <Outlet/>
+        <AppFooter/>
     </div>
   )
 }
