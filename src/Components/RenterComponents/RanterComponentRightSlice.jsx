@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { FaFileImport } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { CentralContext } from "../../Contexts/CentralContextComp";
+import useGetRanterDatas from "../../Hooks/useGetRanterDatas";
 
 
 
 const RanterComponentRightSlice = () => {
 
     const {user} = useContext(CentralContext);
+    const [raterData, refetch] = useGetRanterDatas();
 
 
     return (
@@ -24,12 +26,12 @@ const RanterComponentRightSlice = () => {
             </div>
 
             <div className=" mt-3">
-                <h1 className=" space-x-2 text-sm flex items-center"><FaFileImport className=" mr-2" />Available Rent Request <span className="font-bold">: 1</span></h1>
+                <h1 className=" space-x-2 text-sm flex items-center"><FaFileImport className=" mr-2" />Available Rent Request <span className="font-bold">: {2-raterData?.length}</span></h1>
             </div>
 
             <div className="space-x-3 mt-8">
-                <Link to={'/ranter/manage'}>
-                    <button className="btn btn-sm bg-yellow-400 shadow-lg"> Manage Requests</button>
+                <Link to={'/allitems'}>
+                    <button className="btn btn-sm bg-yellow-400 border border-yellow-500 shadow-lg"> Search New Home</button>
                 </Link>
             </div>
 

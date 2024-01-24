@@ -1,15 +1,17 @@
 import { useContext } from "react"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import { CentralContext } from "../Contexts/CentralContextComp"
 import { FaBuildingColumns } from "react-icons/fa6";
 
 const AppNavbar = () => {
     const { user, setUser, setLoader, LogOutUser } = useContext(CentralContext);
+    const navigate = useNavigate();
 
     const handleClickLogout = () => {
         LogOutUser();
         setLoader(true);
         setUser({});
+        navigate('/login');
     }
 
 

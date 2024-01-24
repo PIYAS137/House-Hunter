@@ -20,11 +20,11 @@ const MakeRequest = ({ data }) => {
             userPhone: user?.phone,
             houseId: data?._id,
             reqStatus: "pending",
+            ownerEmail: data?.email,
             reqdate: getCurrentDate()
         }
         publicAxios.post('/request', newReq)
             .then(res => {
-                console.log(res.data);
                 if (res.data?.flag === 1) {
                     Swal.fire({
                         position: "top-end",
@@ -33,7 +33,7 @@ const MakeRequest = ({ data }) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                }else if(res.data?.flag === -1){
+                } else if (res.data?.flag === -1) {
                     Swal.fire({
                         position: "top-end",
                         icon: "warning",
@@ -41,7 +41,7 @@ const MakeRequest = ({ data }) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                }else if(res.data.insertedId){
+                } else if (res.data.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -53,14 +53,25 @@ const MakeRequest = ({ data }) => {
             }).catch(err => {
                 console.log(err);
             })
-
         setModalStatus(false);
     }
 
 
     return (
         <div>
-            <button onClick={() => setModalStatus(true)} className=" btn text-white mt-8 bg-orange-400 ">Make Request</button>
+            {
+                data?.status === false ?
+                    <>
+                        {
+                            user?.email === data?.email ?
+                                <p className=' mt-8 text-sm italic bg-slate-200 px-3 py-2 rounded-lg text-blue-500'>This is your home</p>
+                                :
+                                <button onClick={() => setModalStatus(true)} className=" btn text-white mt-8 bg-orange-400 ">Make Request</button>
+                        }
+                    </>
+                    :
+                    <p className=" text-white mt-8 bg-red-600 p-1 px-3 rounded-lg text-sm ">Already Sold</p>
+            }
             {
                 modalStatus && <div className='z-50 flex justify-center items-center absolute top-0 left-0 w-full h-full bg-[#000000a6]'>
                     <div className=' relative w-full max-w-xl bg-slate-300 p-5 rounded-xl '>

@@ -10,7 +10,6 @@ import OwnerAddItemPage from '../Pages/Owner/OwnerAddItemPage/OwnerAddItemPage';
 import OwnerMangePage from '../Pages/Owner/OwnerMangePage/OwnerMangePage';
 import RanterRootPage from '../Pages/Renter/RanterRootPage/RanterRootPage';
 import RanterDashboard from '../Pages/Renter/RanterDashboard/RanterDashboard';
-import RanterManagePage from '../Pages/Renter/RanterManagePage/RanterManagePage';
 import ViewAllItemsPage from '../Pages/ViewAllItemsPage/ViewAllItemsPage';
 import OneItemViewPage from '../Pages/OneItemViewPage/OneItemViewPage';
 import PrivateRoute from '../Private/PrivateRoute';
@@ -72,10 +71,6 @@ const router = createBrowserRouter([
                 path: 'profile',
                 element: <PrivateRoute><RanterDashboard /></PrivateRoute>
             },
-            {
-                path: 'manage',
-                element: <PrivateRoute><RanterManagePage /></PrivateRoute>
-            }
         ]
     }
 ])

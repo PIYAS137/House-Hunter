@@ -15,8 +15,9 @@ const AllItemsSlice = () => {
                 <p className=" mt-2 text-sm text-gray-400">" choose your favourite homes from here "</p>
             </div>
             <div className=" flex flex-wrap justify-center gap-10 my-20">
+                {/* im showing only upbooked house here ! by the filter */}
                 {
-                    allHouse.map(one=><HomeCard key={one._id} data={one}/>)
+                    allHouse.filter(one=>one?.status==false).map(one=><HomeCard key={one._id} data={one}/>)
                 }
             </div>
         </div>

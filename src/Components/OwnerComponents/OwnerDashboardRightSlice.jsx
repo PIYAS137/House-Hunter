@@ -29,7 +29,7 @@ const OwnerDashboardRightSlice = () => {
             </div>
             <div className="space-x-3 mt-8">
                 <Link to={'/owner/add'}><button className="btn btn-sm bg-yellow-400 shadow-lg">+ Add New House</button></Link>
-                <Link to={'/owner/manage'}><button className="btn btn-sm bg-yellow-400 shadow-lg"> Manage Houses</button></Link>
+                <Link to={'/owner/manage'}><button className="btn btn-sm bg-yellow-400 shadow-lg"> Manage Requests</button></Link>
             </div>
         </div>
     )

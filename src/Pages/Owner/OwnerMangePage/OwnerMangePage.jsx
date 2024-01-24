@@ -1,20 +1,31 @@
 import OwnerTableRow from "../../../Components/OwnerComponents/OwnerTableRow"
+import useGetOwnersReqRentData from "../../../Hooks/useGetOwnersReqRentData";
 
 
 const OwnerMangePage = () => {
 
+    const [allReqs, refetch] = useGetOwnersReqRentData();
+    console.log(allReqs);
+
+
     return (
-        <div className=" bg-red-500">
+        <div className="container mx-auto ">
+            <h1 className=" text-center font-bold text-lg py-10">See Who make Req for you Home</h1>
             <table className="table ">
-                <thead>
+                <thead className=" bg-orange-500 text-white">
                     <tr>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Favorite Color</th>
+                        <th>Ranter Name</th>
+                        <th>Ranter Email</th>
+                        <th>Ranter Phone</th>
+                        <th>Req. Date</th>
+                        <th>View House</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody className=" bg-red-200 ">
-                    <OwnerTableRow />
+                <tbody className="  ">
+                    {
+                        allReqs?.map(one => <OwnerTableRow key={one._id} data={one} />)
+                    }
                 </tbody>
             </table>
         </div>
