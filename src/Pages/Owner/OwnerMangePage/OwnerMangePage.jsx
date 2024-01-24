@@ -4,9 +4,7 @@ import useGetOwnersReqRentData from "../../../Hooks/useGetOwnersReqRentData";
 
 const OwnerMangePage = () => {
 
-    const [allReqs, ] = useGetOwnersReqRentData();
-    console.log(allReqs);
-
+    const [allReqs,] = useGetOwnersReqRentData();
 
     return (
         <div className="container mx-auto overflow-x-auto">

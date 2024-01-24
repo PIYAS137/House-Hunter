@@ -18,10 +18,8 @@ const AppNavbar = () => {
     const navLinks = <>
         <li><NavLink to={'/'}>Home Page</NavLink></li>
         <li><NavLink to={'/allitems'}>Houses</NavLink></li>
-        {/* {user?.role === 'renter' ? <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li> : ''}
-        {user?.role === 'owner' ? <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li> : ''} */}
-        <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li>
-        <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li>
+        {user?.role === 'renter' ? <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li> : ''}
+        {user?.role === 'owner' ? <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li> : ''}
 
     </>
 

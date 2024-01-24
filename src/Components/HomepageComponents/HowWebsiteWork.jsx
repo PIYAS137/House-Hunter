@@ -1,8 +1,8 @@
 import { useState } from "react";
 import SectionHeader from "../SectionHeader/SectionHeader";
+import { rulesArr } from "../../Utils/RulesArray";
 
 const HowWebsiteWork = () => {
-
     // add your array of object data 
     const array = [1, 2, 3, 4]
 
@@ -20,7 +20,7 @@ const HowWebsiteWork = () => {
                 <div className="flex justify-center ">
                     <div className=" max-w-[550px] rounded-lg py-20 space-y-6 cursor-pointer">
                         {/* maping each accordion  */}
-                        {array.map((arr, idx) => (
+                        {rulesArr?.map((arr, idx) => (
                             <div key={idx} onClick={() => handleToggle(idx)} className="flex items-center">
                                 {/* the index div  */}
                                 <div className="w-16 h-16 bg-[#355E72] flex justify-center items-center text-white text-2xl font-semibold rounded-xl font-sans">
@@ -34,7 +34,7 @@ const HowWebsiteWork = () => {
                                 <div>
                                     <div className="max-w-[450px] bg-sky-50 shadow-md border-t-[12px] p-3 border-[#355E72] relative">
                                         <span className="h-0 w-0 border-b-[40px] border-b-transparent border-r-[40px] border-r-[#355E72] absolute top-0 right-0"></span>
-                                        <h1 className="text-[#355E72] text-xl text-center">This is my title1</h1>
+                                        <h1 className="text-[#355E72] text-xl text-center">{arr?.title}</h1>
                                     </div>
                                     <div
                                         className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600  ${isOpen === idx ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
@@ -42,8 +42,7 @@ const HowWebsiteWork = () => {
                                     >
                                         <div className="overflow-hidden">
                                             <div className=" max-w-[450px] rounded-br-xl rounded-bl-xl bg-[#355E72] text-white p-6 text-center text-sm">
-                                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor nam ipsam sint illo odio sed voluptates suscipit, rerum esse ratione non alias obcaecati
-                                                error harum nesciunt. Vitae optio commodi illum!
+                                                {arr?.description}
                                             </div>
                                         </div>
                                     </div>

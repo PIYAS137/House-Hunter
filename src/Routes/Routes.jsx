@@ -35,12 +35,12 @@ const router = createBrowserRouter([
                 element: <ViewAllItemsPage />
             }, {
                 path: '/allitems/:sid',
-                loader: ({ params }) => fetch(`http://localhost:5022/item/${params.sid}`),
+                loader: ({ params }) => fetch(`https://house-hunter-backend-eight.vercel.app/item/${params.sid}`),
                 element: <PrivateRoute><OneItemViewPage /></PrivateRoute>
             },
             {
                 path: 'update/:sid',
-                loader: ({ params }) => fetch(`http://localhost:5022/item/${params.sid}`),
+                loader: ({ params }) => fetch(`https://house-hunter-backend-eight.vercel.app/item/${params.sid}`),
                 element: <PrivateRoute><OwnerUpdatePage /></PrivateRoute>
             }
         ]
