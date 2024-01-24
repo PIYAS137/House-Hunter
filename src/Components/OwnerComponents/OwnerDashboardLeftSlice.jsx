@@ -11,8 +11,8 @@ const OwnerDashboardLeftSlice = () => {
 
   return (
     <div className=" h-full ">
-      <h1 className=" text-center py-3 font-black text-2xl uppercase sticky top-0 bg-white border-b">My Added Houses</h1>
-      <div className=" w-full h-full p-10">
+      <h1 className=" text-center py-3 font-black text-lg lg:text-2xl uppercase sticky top-0 bg-white border-b">My Added Houses</h1>
+      <div className=" w-full h-full p-3 md:p-10">
 
 
 

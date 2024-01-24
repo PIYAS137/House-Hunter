@@ -1,23 +1,23 @@
 import React from 'react'
 import SectionHeader from '../SectionHeader/SectionHeader'
 import HomeCard from './HomeCard'
+import useGetAllHouses from '../../Hooks/useGetAllHouses'
+import { Link } from 'react-router-dom'
 
 const RecentHomesSection = () => {
+
+  const [allHouse,refetch] = useGetAllHouses();
+
   return (
     <div className=' container mx-auto'>
         <SectionHeader small={'most recent homes are'} big={'Recent Homes'}/>
-        <div className=' grid gap-6 grid-cols-4 mt-16'>
-            <HomeCard/>
-            <HomeCard/>
-            <HomeCard/>
-            <HomeCard/>
-            <HomeCard/>
-            <HomeCard/>
-            <HomeCard/>
-            <HomeCard/>
+        <div className='flex flex-wrap justify-center gap-10 mt-16'>
+            {
+              allHouse?.slice(0,8)?.map(one=><HomeCard key={one._id} data={one}/>)
+            }
         </div>
         <div className=' text-center mt-10'>
-          <button className='uppercase btn hover:bg-orange-500 bg-orange-400 text-white'>View All House</button>
+          <Link to={'/allitems'}><button className='uppercase btn hover:bg-orange-500 bg-orange-400 text-white'>View All House</button></Link>
         </div>
     </div>
   )

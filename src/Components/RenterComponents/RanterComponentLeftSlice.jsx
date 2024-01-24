@@ -10,8 +10,8 @@ const RanterComponentLeftSlice = () => {
 
     return (
         <div className=" h-full">
-            <h1 className=" text-center py-3 font-black text-2xl uppercase sticky top-0 bg-white">House Requests</h1>
-            <div className=" w-full h-full flex justify-center items-start gap-5 border-t p-10">
+            <h1 className=" text-center py-3 font-black text-xl md:text-2xl uppercase sticky top-0 bg-white">House Requests</h1>
+            <div className=" w-full h-full flex flex-col xl:flex-row justify-center items-start gap-5 border-t p-3 md:p-10">
 
 
 

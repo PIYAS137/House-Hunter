@@ -3,7 +3,7 @@ import { bangladeshCities } from "../../Utils/Cities";
 
 
 
-const SearchBarSlice = () => {
+const SearchBarSlice = ({handleGetSearchResult}) => {
 
     const {
         register,
@@ -12,17 +12,14 @@ const SearchBarSlice = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => handleGetSearchResult(data);
 
 
 
 
     return (
         <div className=" py-2 flex justify-end bg-orange-300">
-
-
-
-            <form onSubmit={handleSubmit(onSubmit)} className=" flex justify-center items-center container mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className=" flex justify-center flex-col lg:flex-row space-y-2 items-center container mx-auto">
 
                 <div className=" mx-5">
                     <input {...register("pay")} type="range" min={0} max="18000" step={3000} className="range range-xs range-error" />
@@ -35,15 +32,6 @@ const SearchBarSlice = () => {
                         <span>18k</span>
                     </div>
                 </div>
-
-                {/* Available date field */}
-                <select {...register("date")} className="p-3 rounded-lg input-bordered mr-2">
-                    <option value="" >Avaialablity</option>
-                    <option value="5" >Next 5 days</option>
-                    <option value="10" >Next 10 days</option>
-                    <option value="20" >Next 20 days</option>
-                    <option value="30" >Next 30 days</option>
-                </select>
 
 
                 {/* Room size field */}
@@ -77,7 +65,7 @@ const SearchBarSlice = () => {
                     }
                 </select>
 
-                <input type="submit" value={"search"} className="uppercase btn mx-2 bg-yellow-500 border-black" />
+                <input type="submit" value={"search"} className="uppercase btn btn-sm md:btn-md mx-2 bg-yellow-500 border-black" />
             </form>
         </div>
     )

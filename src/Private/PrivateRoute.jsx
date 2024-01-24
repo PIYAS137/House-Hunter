@@ -5,7 +5,6 @@ import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
     const { user, loader } = useContext(CentralContext);
-    console.log(loader);
 
     if (loader){
         return <div className="flex justify-center items-center w-full h-screen">

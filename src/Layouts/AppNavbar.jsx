@@ -22,7 +22,7 @@ const AppNavbar = () => {
         {user?.role === 'owner' ? <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li> : ''} */}
         <li><NavLink to={'/ranter/profile'}>Ranter Profile</NavLink></li>
         <li><NavLink to={'/owner/profile'}>Owner Profile</NavLink></li>
-        
+
     </>
 
     return (
@@ -37,10 +37,12 @@ const AppNavbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <div className="text-xl font-black text-center flex flex-col justify-center items-center space-x-2 text-yellow-600">
-                        <FaBuildingColumns className=" text-2xl"/>
-                        <p>House Hunter</p>
-                    </div>
+                    <Link to={'/'}>
+                        <div className="text-sm lg:text-xl font-black text-center flex flex-col justify-center items-center space-x-2 text-yellow-600">
+                            <FaBuildingColumns className=" text-2xl" />
+                            <p>House Hunter</p>
+                        </div>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

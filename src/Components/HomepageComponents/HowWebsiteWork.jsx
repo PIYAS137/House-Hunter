@@ -13,9 +13,9 @@ const HowWebsiteWork = () => {
     return (
         <div className=" container mx-auto">
             <SectionHeader big={'How Website Work'} small={"lets learn about our website"} />
-            <div className=" grid grid-cols-2 items-start mt-10">
-                <div className=" flex justify-center items-start">
-                    <img className="max-w-lg -mt-16" src="https://i.ibb.co/mSbjJSh/Pngtree-a-man-at-work-4463549.png" alt="" />
+            <div className=" grid grid-cols-1 lg:grid-cols-2 items-start mt-10">
+                <div className=" flex justify-center items-start overflow-hidden">
+                    <img className="max-w-lg -mt-16 object-cover" src="https://i.ibb.co/mSbjJSh/Pngtree-a-man-at-work-4463549.png" alt="" />
                 </div>
                 <div className="flex justify-center ">
                     <div className=" max-w-[550px] rounded-lg py-20 space-y-6 cursor-pointer">

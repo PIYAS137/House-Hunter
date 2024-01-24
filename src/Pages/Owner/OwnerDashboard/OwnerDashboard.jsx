@@ -4,12 +4,12 @@ import OwnerDashboardRightSlice from "../../../Components/OwnerComponents/OwnerD
 
 const OwnerDashboard = () => {
     return (
-        <div className=" h-screen overflow-hidden">
-            <div className="  h-full grid grid-cols-3">
-                <div className=" col-span-2  overflow-y-scroll">
+        <div className=" md:h-screen md:overflow-hidden">
+            <div className="  h-full flex flex-col-reverse md:grid md:grid-cols-3">
+                <div className=" mt-10 md:mt-0 md:grid-cols-1 md:col-span-2  overflow-y-scroll">
                     <OwnerDashboardLeftSlice />
                 </div>
-                <div className=" col-span-1 border-l">
+                <div className=" md:col-span-1 border-l">
                     <OwnerDashboardRightSlice />
                 </div>
             </div>

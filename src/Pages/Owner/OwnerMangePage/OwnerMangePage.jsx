@@ -4,12 +4,12 @@ import useGetOwnersReqRentData from "../../../Hooks/useGetOwnersReqRentData";
 
 const OwnerMangePage = () => {
 
-    const [allReqs, refetch] = useGetOwnersReqRentData();
+    const [allReqs, ] = useGetOwnersReqRentData();
     console.log(allReqs);
 
 
     return (
-        <div className="container mx-auto ">
+        <div className="container mx-auto overflow-x-auto">
             <h1 className=" text-center font-bold text-lg py-10">See Who make Req for you Home</h1>
             <table className="table ">
                 <thead className=" bg-orange-500 text-white">

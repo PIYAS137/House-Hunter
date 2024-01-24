@@ -6,9 +6,11 @@ import AppFooter from "../../Layouts/AppFooter"
 const RootPage = () => {
   return (
     <div>
-        <AppNavbar/>
-        <Outlet/>
-        <AppFooter/>
+      <AppNavbar />
+      <div className=" px-2">
+        <Outlet />
+      </div>
+      <AppFooter />
     </div>
   )
 }
